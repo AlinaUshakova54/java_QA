@@ -15,7 +15,7 @@ public class TestBase {
 
     @After
     public void tearDown() {
-        app.logout();
+        app.getSessionHelper().logout();
         app.stop();
     }
 

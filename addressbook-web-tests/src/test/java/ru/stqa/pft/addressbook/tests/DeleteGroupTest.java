@@ -5,11 +5,11 @@ public class DeleteGroupTest extends TestBase {
 
   @Test
   public void deleteGroup() {
-    app.gotoGroupPage();
+    app.getNavigationHelper().gotoGroupPage();
     //driver.findElement(By.cssSelector(".group:nth-child(5)")).click();
-    app.selectGroup();
-    app.deleteSelectedGroups();
-    app.returnToGroupPage();
+    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().deleteSelectedGroups();
+    app.getGroupHelper().returnToGroupPage();
   }
 
 }
