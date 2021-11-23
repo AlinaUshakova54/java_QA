@@ -5,6 +5,7 @@ import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class AddContactTest {
   private WebDriver driver;
@@ -35,7 +36,7 @@ public class AddContactTest {
   @Test
   public void addContact() {
     gotoAddPage();
-    fillContactForm("alina", "test1", "ushakova", "test2", "test3", "test4", "test5", "test6", "12345678", "test7");
+    fillContactForm(new ContactData("alina", "test1", "ushakova", "test2", "test3", "test4", "test5", "test6", "12345678", "test7"));
     submitContactCreation();
     returntoHomePage();
     logout();
@@ -53,37 +54,37 @@ public class AddContactTest {
     driver.findElement(By.name("submit")).click();
   }
 
-  private void fillContactForm(String name, String middleName, String lastName, String nickName, String title, String company, String address, String home, String mobile, String work) {
+  private void fillContactForm(ContactData contactData) {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys(name);
+    driver.findElement(By.name("firstname")).sendKeys(contactData.getName());
     driver.findElement(By.name("middlename")).click();
     driver.findElement(By.name("middlename")).clear();
-    driver.findElement(By.name("middlename")).sendKeys(middleName);
+    driver.findElement(By.name("middlename")).sendKeys(contactData.getMiddleName());
     driver.findElement(By.name("lastname")).click();
     driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys(lastName);
+    driver.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
     driver.findElement(By.name("nickname")).click();
     driver.findElement(By.name("nickname")).clear();
-    driver.findElement(By.name("nickname")).sendKeys(nickName);
+    driver.findElement(By.name("nickname")).sendKeys(contactData.getNickName());
     driver.findElement(By.name("title")).click();
     driver.findElement(By.name("title")).clear();
-    driver.findElement(By.name("title")).sendKeys(title);
+    driver.findElement(By.name("title")).sendKeys(contactData.getTitle());
     driver.findElement(By.name("company")).click();
     driver.findElement(By.name("company")).clear();
-    driver.findElement(By.name("company")).sendKeys(company);
+    driver.findElement(By.name("company")).sendKeys(contactData.getCompany());
     driver.findElement(By.name("address")).click();
     driver.findElement(By.name("address")).clear();
-    driver.findElement(By.name("address")).sendKeys(address);
+    driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
     driver.findElement(By.name("home")).click();
     driver.findElement(By.name("home")).clear();
-    driver.findElement(By.name("home")).sendKeys(home);
+    driver.findElement(By.name("home")).sendKeys(contactData.getHome());
     driver.findElement(By.name("mobile")).click();
     driver.findElement(By.name("mobile")).clear();
-    driver.findElement(By.name("mobile")).sendKeys(mobile);
+    driver.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
     driver.findElement(By.name("work")).click();
     driver.findElement(By.name("work")).clear();
-    driver.findElement(By.name("work")).sendKeys(work);
+    driver.findElement(By.name("work")).sendKeys(contactData.getWork());
   }
 
   private void gotoAddPage() {
