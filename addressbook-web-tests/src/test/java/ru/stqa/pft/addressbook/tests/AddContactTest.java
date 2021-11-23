@@ -14,16 +14,16 @@ public class AddContactTest {
     System.setProperty("webdriver.gecko.driver", "C:/Devel/java_QA/addressbook-web-tests/geckodriver.exe");
     driver = new FirefoxDriver();
     driver.get("http://localhost/addressbook/");
-    login();
+    login("admin", "secret");
   }
 
-  private void login() {
+  private void login(String name, String password) {
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys("admin");
+    driver.findElement(By.name("user")).sendKeys(name);
     driver.findElement(By.name("pass")).click();
     driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys("secret");
+    driver.findElement(By.name("pass")).sendKeys(password);
     driver.findElement(By.cssSelector("input:nth-child(7)")).click();
   }
 
@@ -35,7 +35,7 @@ public class AddContactTest {
   @Test
   public void addContact() {
     gotoAddPage();
-    fillContactForm();
+    fillContactForm("alina", "test1", "ushakova", "test2", "test3", "test4", "test5", "test6", "12345678", "test7");
     submitContactCreation();
     returntoHomePage();
     logout();
@@ -53,37 +53,37 @@ public class AddContactTest {
     driver.findElement(By.name("submit")).click();
   }
 
-  private void fillContactForm() {
+  private void fillContactForm(String name, String middleName, String lastName, String nickName, String title, String company, String address, String home, String mobile, String work) {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys("alina");
+    driver.findElement(By.name("firstname")).sendKeys(name);
     driver.findElement(By.name("middlename")).click();
     driver.findElement(By.name("middlename")).clear();
-    driver.findElement(By.name("middlename")).sendKeys("test1");
+    driver.findElement(By.name("middlename")).sendKeys(middleName);
     driver.findElement(By.name("lastname")).click();
     driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys("ushakova");
+    driver.findElement(By.name("lastname")).sendKeys(lastName);
     driver.findElement(By.name("nickname")).click();
     driver.findElement(By.name("nickname")).clear();
-    driver.findElement(By.name("nickname")).sendKeys("test2");
+    driver.findElement(By.name("nickname")).sendKeys(nickName);
     driver.findElement(By.name("title")).click();
     driver.findElement(By.name("title")).clear();
-    driver.findElement(By.name("title")).sendKeys("test3");
+    driver.findElement(By.name("title")).sendKeys(title);
     driver.findElement(By.name("company")).click();
     driver.findElement(By.name("company")).clear();
-    driver.findElement(By.name("company")).sendKeys("test4");
+    driver.findElement(By.name("company")).sendKeys(company);
     driver.findElement(By.name("address")).click();
     driver.findElement(By.name("address")).clear();
-    driver.findElement(By.name("address")).sendKeys("test5");
+    driver.findElement(By.name("address")).sendKeys(address);
     driver.findElement(By.name("home")).click();
     driver.findElement(By.name("home")).clear();
-    driver.findElement(By.name("home")).sendKeys("test6");
+    driver.findElement(By.name("home")).sendKeys(home);
     driver.findElement(By.name("mobile")).click();
     driver.findElement(By.name("mobile")).clear();
-    driver.findElement(By.name("mobile")).sendKeys("12345678");
+    driver.findElement(By.name("mobile")).sendKeys(mobile);
     driver.findElement(By.name("work")).click();
     driver.findElement(By.name("work")).clear();
-    driver.findElement(By.name("work")).sendKeys("test7");
+    driver.findElement(By.name("work")).sendKeys(work);
   }
 
   private void gotoAddPage() {
