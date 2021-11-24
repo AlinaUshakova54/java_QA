@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 public class ContactHelper extends HelperBase{
 
@@ -38,6 +36,14 @@ public class ContactHelper extends HelperBase{
     public void deleteSelectedContacts() {
         click(By.cssSelector(".left:nth-child(8) > input"));
         driver.switchTo().alert().accept();
+    }
+
+    public void initContactModification() {
+        click(By.cssSelector(".center:nth-child(8) img"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
     }
 
 }
